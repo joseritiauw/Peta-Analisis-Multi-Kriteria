@@ -1,0 +1,111 @@
+project:
+  crs: "EPSG:32749"
+  resolution: 30
+  nodata: -9999
+
+paths:
+  raw_data: "data/"
+  interim: "data/interim/"
+  final: "data/final/"
+
+files:
+  boundary: "boundary_surabaya_lvl3.gpkg"
+  dem: "DEM_Surabaya.tif"
+  sungai: "sungai_sby.gpkg"
+  hujan: "curah_hujan_sby_only.tif"
+  tanah: "jenis_tanah_sby.gpkg"
+  populasi: "populasi_surabaya.tif"
+  bangunan: "bangunan.gpkg"
+  fasum: "fasum.gpkg"
+
+weights:
+  # WLC Weights for Final Risk
+  smce:
+    hazard: 0.40
+    exposure: 0.35
+    vulnerability: 0.25
+
+  # Sub-component weights
+  hazard:
+    elevasi: 0.40
+    sungai: 0.30
+    hujan: 0.20
+    tanah: 0.10
+  exposure:
+    populasi: 0.50
+    bangunan: 0.50
+  vulnerability:
+    fasum: 1.00
+
+density:
+  bangunan_method: "building_coverage_ratio"
+  fasum_method: "kde_moving_window"
+  fasum_radius_m: 500
+
+reclassify:
+  method: "thresholds"
+
+  thresholds:
+    # Format: [Upper Bound, Score (1-5)]
+    # Elevasi (m): Semakin rendah semakin bahaya
+    elevasi:
+      - [1, 5]
+      - [3, 4]
+      - [5, 3]
+      - [10, 2]
+      - [99999, 1]
+
+    # Jarak Sungai (m): Jaringan sungai Surabaya sangat padat (termasuk selokan)
+    # Kita perlebar jaraknya agar tidak semuanya merah.
+    sungai:
+      - [100, 5]
+      - [300, 4]
+      - [500, 3]
+      - [1000, 2]
+      - [99999, 1]
+
+    # Curah Hujan: Data mentah berada di kisaran 142 - 159 (kemungkinan rata-rata bulanan mm/bulan)
+    hujan:
+      - [145, 1]
+      - [148, 2]
+      - [152, 3]
+      - [155, 4]
+      - [99999, 5]
+
+    # Kepadatan Populasi: (Data Riil BPS 2024 - Jiwa/Km²)
+    populasi:
+      - [5000, 1]
+      - [10000, 2]
+      - [15000, 3]
+      - [20000, 4]
+      - [99999, 5]
+
+    # Kepadatan Bangunan
+    bangunan:
+      - [0.2, 1]
+      - [0.4, 2]
+      - [0.6, 3]
+      - [0.8, 4]
+      - [99999, 5]
+
+    # Kepadatan Fasum: Nilai berupa integer riil (jumlah fasilitas) 0 - 32
+    fasum:
+      - [0, 1]
+      - [2, 2]
+      - [5, 3]
+      - [8, 4]
+      - [99999, 5]
+
+tanah_lookup:
+  # Jenis tanah spesifik ke skor bahaya
+  4500: 5
+  4518: 3
+  4584: 1
+
+risk_classification:
+  labels:
+    1: "Sangat Rendah"
+    2: "Rendah"
+    3: "Sedang"
+    4: "Tinggi"
+    5: "Sangat Tinggi"

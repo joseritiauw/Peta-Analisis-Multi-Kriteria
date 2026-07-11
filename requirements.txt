@@ -1,0 +1,12 @@
+streamlit==1.36.0
+folium
+streamlit-folium
+rasterio
+geopandas
+shapely
+numpy
+pandas
+plotly
+PyYAML
+matplotlib
+rasterstats

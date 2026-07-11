@@ -1,0 +1,32 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.venv/
+env.bak/
+venv.bak/
+
+# Ignore Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Ignore large raw geospatial files to prevent GitHub push errors (100MB limit)
+data/*.gpkg
+data/*.tif
+!data/boundary_surabaya_lvl3.gpkg
+
+# Specifically allow the required output files for Streamlit Dashboard
+!data/interim/hazard_final.tif
+!data/interim/exposure_final.tif
+!data/interim/vulnerability_final.tif
+!data/final/peta_risiko_final.tif
+
+# Ignore VSCode settings if not needed
+.vscode/
+
+# Ignore Streamlit config if you don't want it public
+# .streamlit/
