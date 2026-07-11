@@ -401,7 +401,7 @@ def render_animated_bar(label, icon, val):
     desc_text = desc_map.get(label, [f"{int(val)}/5"] * 5)[val_idx]
     
     st.markdown(f"""
-    <div class="param-item">
+    <div class="param-item" style="margin-bottom: 24px;">
         <div class="param-header">
             <span><i class="{icon} param-icon"></i> {label}</span>
             <span style="font-family: 'IBM Plex Mono', monospace; color: #94A3B8; font-weight: 600; font-size: 12px;">{desc_text}</span>
