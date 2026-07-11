@@ -457,7 +457,7 @@ def show_detail_popup(lat, lon, boundary_utm, pop_dict):
     badge = f"<span style='background: {badge_bg}; color: {cat_color}; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; font-family: Inter, sans-serif;'><i class='fa-solid fa-shield-halved'></i> RISIKO {cat_text}</span>"
 
     st.markdown(f"""
-    <div style='display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 12px;'>
+    <div style='display:flex; justify-content:space-between; align-items:flex-start; margin-top: 24px; margin-bottom: 12px;'>
         <div style='display:flex; align-items:center; gap: 16px;'>
             <div style='width: 48px; height: 48px; border-radius: 50%; background: #EFF6FF; color: #3B82F6; display: flex; justify-content: center; align-items: center; font-size: 20px flex-shrink: 0;'>
                 <i class='fa-solid fa-location-dot'></i>
@@ -522,7 +522,7 @@ def show_detail_popup(lat, lon, boundary_utm, pop_dict):
             <i class='fa-solid fa-triangle-exclamation'></i> Komponen Hazard (Bencana Alam)
         </div>
         """, unsafe_allow_html=True)
-        c1, c2 = st.columns(2)
+        c1, c2 = st.columns(2, gap="large")
         with c1:
             render_animated_bar("Elevasi (Dataran Rendah)", "fa-solid fa-arrow-down-short-wide", elevasi)
             render_animated_bar("Intensitas Curah Hujan", "fa-solid fa-cloud-showers-heavy", hujan)
@@ -532,7 +532,7 @@ def show_detail_popup(lat, lon, boundary_utm, pop_dict):
             
         st.markdown("<hr style='margin: 16px 0; border: none; border-top: 1px dashed #E5E7EB;'>", unsafe_allow_html=True)
         
-        c3, c4 = st.columns(2)
+        c3, c4 = st.columns(2, gap="large")
         with c3:
             st.markdown("""
             <div style='margin-bottom: 12px; font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; color: #2B2A28; text-transform: uppercase; letter-spacing: 1px;'>
