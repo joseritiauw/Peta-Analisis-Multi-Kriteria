@@ -156,10 +156,10 @@ st.markdown("""
     .stTabs [aria-selected="true"] { color: #3B82F6 !important; border-bottom: 2px solid #3B82F6 !important; }
     
     /* KPI Cards */
-    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px; }
     .kpi-card {
         background: #FFFFFF; border: 1px solid #E5E7EB;
-        border-radius: 8px; padding: 12px 16px; display: flex; flex-direction: column; justify-content: center;
+        border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; justify-content: center;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
         border-left: 3px solid #3B82F6;
     }
@@ -167,9 +167,9 @@ st.markdown("""
     .kpi-card.cat-med { border-left-color: #F59E0B; }
     .kpi-card.cat-high { border-left-color: #DC2626; }
     
-    .kpi-label { font-family: 'Inter', sans-serif !important; font-size: 11px; color: #6B7280; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
-    .kpi-value { font-family: 'Inter', sans-serif !important; font-size: 22px; color: #111827; font-weight: 600; line-height: 1.2; }
-    .kpi-subtext { font-family: 'Inter', sans-serif !important; font-size: 11px; color: #6B7280; margin-top: 4px; }
+    .kpi-label { font-family: 'Inter', sans-serif !important; font-size: 10px; color: #6B7280; font-weight: 600; text-transform: uppercase; margin-bottom: 2px; }
+    .kpi-value { font-family: 'Inter', sans-serif !important; font-size: 18px; color: #111827; font-weight: 700; line-height: 1.2; }
+    .kpi-subtext { font-family: 'Inter', sans-serif !important; font-size: 10px; color: #6B7280; margin-top: 2px; }
     
     /* Parameter Progress Bars */
     .param-item { margin-bottom: 16px; }
@@ -588,14 +588,14 @@ def show_detail_popup(lat, lon, boundary_utm, pop_dict):
         with c2:
             st.markdown(f"""
 <div class='panel-card'>
-<div class='panel-title'>Kontribusi Faktor Risiko</div>
+<div class='panel-title' style='margin-bottom: 12px;'>Kontribusi Faktor Risiko</div>
 <div>
-<p style='color:#6B7280; margin-bottom:4px; font-size:12px; font-family: Inter, sans-serif; text-transform: uppercase; font-weight: 600;'>HAZARD (Bahaya)</p>
-<h3 style='margin:0; color:#111827; margin-bottom: 20px; font-family: Inter, sans-serif; font-size: 24px;'>{pct_h:.1f}%</h3>
-<p style='color:#6B7280; margin-bottom:4px; font-size:12px; font-family: Inter, sans-serif; text-transform: uppercase; font-weight: 600;'>EXPOSURE (Keterpaparan)</p>
-<h3 style='margin:0; color:#111827; margin-bottom: 20px; font-family: Inter, sans-serif; font-size: 24px;'>{pct_e:.1f}%</h3>
-<p style='color:#6B7280; margin-bottom:4px; font-size:12px; font-family: Inter, sans-serif; text-transform: uppercase; font-weight: 600;'>VULNERABILITY (Kerentanan)</p>
-<h3 style='margin:0; color:#111827; font-family: Inter, sans-serif; font-size: 24px;'>{pct_v:.1f}%</h3>
+<p style='color:#6B7280; margin-bottom:2px; font-size:11px; font-family: Inter, sans-serif; text-transform: uppercase; font-weight: 600;'>HAZARD (Bahaya)</p>
+<div style='margin:0; color:#111827; margin-bottom: 12px; font-family: Inter, sans-serif; font-size: 20px; font-weight: 700;'>{pct_h:.1f}%</div>
+<p style='color:#6B7280; margin-bottom:2px; font-size:11px; font-family: Inter, sans-serif; text-transform: uppercase; font-weight: 600;'>EXPOSURE (Keterpaparan)</p>
+<div style='margin:0; color:#111827; margin-bottom: 12px; font-family: Inter, sans-serif; font-size: 20px; font-weight: 700;'>{pct_e:.1f}%</div>
+<p style='color:#6B7280; margin-bottom:2px; font-size:11px; font-family: Inter, sans-serif; text-transform: uppercase; font-weight: 600;'>VULNERABILITY (Kerentanan)</p>
+<div style='margin:0; color:#111827; font-family: Inter, sans-serif; font-size: 20px; font-weight: 700;'>{pct_v:.1f}%</div>
 </div>
 </div>
 """, unsafe_allow_html=True)
