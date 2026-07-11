@@ -410,7 +410,7 @@ def render_animated_bar(label, icon, val):
     </div>
     """, unsafe_allow_html=True)
 
-@st.dialog("Analisis Detail Lokasi", width="large")
+@st.experimental_dialog("Analisis Detail Lokasi", width="large")
 def show_detail_popup(lat, lon, boundary_utm, pop_dict):
     val = get_pixel_value(lat, lon, final_tif)
     if val is None:
